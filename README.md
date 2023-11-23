@@ -30,3 +30,36 @@ This project demonstrates the implementation of a class diagram using Java Persi
 
    ```bash
    git clone https://github.com/[marvinbraescher]/[SubmissionJPA].git
+
+   1. **Open the project in your preferred IDE.**
+
+2. **Configure the database connection in the `persistence.xml` file.**
+
+3. **Run the `Main` class to execute the provided examples and see JPA in action.**
+
+## Features
+
+- **Artigo (Article) Management:**
+  - Create, read, update, and delete articles.
+  - Associate authors and institutions with articles.
+
+- **Curso (Course) Management:**
+  - Manage course information, including duration, justification, and objectives.
+  - Associate authors with courses.
+
+- **Autor (Author) Management:**
+  - Handle author details, including name, emails, and institution.
+  - Associate authors with institutions.
+
+## Usage
+
+- Execute the `Main` class to run the sample code.
+- Observe the console output for success or failure messages related to CRUD operations.
+
+## Contributing
+
+Feel free to contribute to the project by submitting bug reports, feature requests, or pull requests. Your input is highly valued!
+
+## License
+
+This project is licensed under the MIT License.
