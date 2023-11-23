@@ -2,6 +2,8 @@
 Submission Article/Course 
 
 ![Screenshot_17](https://github.com/marvinbraescher/SubmissionJPA/assets/48102290/53b617d4-238b-48bf-8868-dd2d349477d4)
+
+
 # JPA Implementation - Class Diagram
 
 ## Overview
