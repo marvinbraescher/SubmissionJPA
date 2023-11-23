@@ -10,30 +10,17 @@ import javax.persistence.* ;
  */
 @ Entity
 @ Table ( name = "artigo" )
-public class Artigo implements Serializable {
+@PrimaryKeyJoinColumn(name = "idartigo", referencedColumnName =
+"idsubmissao")
+public class Artigo extends Submissao implements Serializable {
 	
 	private static final long serialVersionUID = 1L ;
-	
-	@ Id
-	@ Column ( name = "idartigo" , nullable = false )
-	@ GeneratedValue ( strategy = GenerationType.IDENTITY )
-	private Long id ;
 	
 	@ Column ( name = "resumo" , nullable = false )
 	private String resumo ;
 	
 	@ Column ( name = "abstract" , nullable = false )
 	private String abstract1 ;
-	
-	public Long getId()
-	{
-		return id ;
-	}
-	
-	public void setId( Long id )
-	{
-		this.id = id ;
-	}
 	
 	
 	public String getResumo()
@@ -62,7 +49,7 @@ public class Artigo implements Serializable {
 	@ Override
 	public String toString()
 	{
-		return "Artigo [id=" + id + ", resumo=" + resumo + ", abstract1=" + abstract1 + "]" ;
+		return "Artigo [resumo=" + resumo + ", abstract1=" + abstract1 + "]" ;
 	}
 
 	public Artigo()

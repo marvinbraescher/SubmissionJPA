@@ -2,7 +2,11 @@
 package locais ;
 
 import java.io.Serializable ;
+import java.util.List ;
+
 import javax.persistence.* ;
+
+import pessoas.Autor ;
 
 /**
  * Entity implementation class for Entity: Instituicao
@@ -13,7 +17,7 @@ import javax.persistence.* ;
 public class Instituicao implements Serializable {
 	
 	private static final long serialVersionUID = 1L ;
-	
+
 	@ Id
 	@ Column ( name = "idinstituicao" , nullable = false )
 	@ GeneratedValue ( strategy = GenerationType.IDENTITY )
@@ -22,15 +26,20 @@ public class Instituicao implements Serializable {
     @Column(name = "endereco", nullable = false)
     private String endereco;
     
+    @OneToMany (mappedBy = "instituicao", cascade ={ CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @JoinColumn(name="idautor")
+    private List< Autor > autores;
+
+    @Column(name = "nome", nullable = false)
+    private String nome;
+    
+
     @ Override
 	public String toString()
 	{
-		return "Instituicao [id=" + id + ", endereco=" + endereco + ", nome=" + nome + "]" ;
+		return "Instituicao [id=" + id + ", endereco=" + endereco + ", autores=" + autores + ", nome=" + nome + "]" ;
 	}
 
-	@Column(name = "nome", nullable = false)
-    private String nome;
-	
 	public Long getId()
 	{
 		return id ;
@@ -45,8 +54,6 @@ public class Instituicao implements Serializable {
 	{
 		super() ;
 	}
-	
-	
 	
 	public String getEndereco()
 	{
@@ -78,4 +85,14 @@ public class Instituicao implements Serializable {
 		this.endereco = endereco;
 	}
 	
+	public List < Autor > getAutores()
+	{
+		return autores ;
+	}
+	
+	
+	public void setAutores( List < Autor > autores )
+	{
+		this.autores = autores ;
+	}
 }

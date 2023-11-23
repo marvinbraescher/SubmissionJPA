@@ -9,16 +9,13 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="curso")
-public class Curso implements Serializable {
+@PrimaryKeyJoinColumn(name = "idcurso", referencedColumnName =
+"idsubmissao")
+public class Curso extends Submissao implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
 
-	@ Id
-	@Column(name = "idcurso", nullable = false)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id ;
-	
     @Column(name = "justificativa", nullable = false)
 	private String justificativa;
     
@@ -30,19 +27,6 @@ public class Curso implements Serializable {
     
     @Column(name = "duracao", nullable = false)
    	private Double duracao;
-    
-    
-	
-	public Long getId()
-	{
-		return id ;
-	}
-	
-	public void setId( Long id )
-	{
-		this.id = id ;
-	}
-	
 	
 	public String getJustificativa()
 	{
@@ -94,7 +78,7 @@ public class Curso implements Serializable {
 	@ Override
 	public String toString()
 	{
-		return "Curso [id=" + id + ", justificativa=" + justificativa + ", material=" + material + ", objetivo="
+		return "Curso [ justificativa=" + justificativa + ", material=" + material + ", objetivo="
 				+ objetivo + ", duracao=" + duracao + "]" ;
 	}
 

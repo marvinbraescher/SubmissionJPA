@@ -3,18 +3,32 @@ package submissoes ;
 
 import java.io.Serializable ;
 import java.util.Date ;
+import java.util.List ;
 
 import javax.persistence.* ;
 
+import pessoas.Autor ;
+
 /**
  * Entity implementation class for Entity: Submissao
+ * @param <Situacao>
  *
  */
 @Entity
-@Table(name="submissao")
+@Inheritance (strategy = InheritanceType.JOINED)
 public class Submissao implements Serializable {
 	
-//a
+	
+	public util.Situacao getSituacao()
+	{
+		return Situacao ;
+	}
+
+	
+	public void setSituacao( util.Situacao situacao )
+	{
+		Situacao = situacao ;
+	}
 
 	private static final long serialVersionUID = 1L ;
 	
@@ -23,19 +37,28 @@ public class Submissao implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id ;
 	
-    @Column(name = "titulo", nullable = false)
+	@Enumerated( EnumType.STRING )
+	private util.Situacao Situacao;
+
+	@Column(name = "titulo")
 	private String titulo;
 	
     @Temporal( TemporalType.DATE )
-    @Column(name = "data", nullable = false)
+    @Column(name = "data")
 	private Date data;
+    
+    //Não utilizei MERGE por que ele cria uma outra submissao no banco
+    @ManyToMany (cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinTable( name="sub_rel_autor",
+    joinColumns={ @JoinColumn(name="idsubmissao")},
+    inverseJoinColumns={@JoinColumn(name="idautor")})
+    private List<Autor> autores;
 
-	
 	public Long getId()
 	{
 		return id ;
 	}
-	
+
 	public void setId( Long id )
 	{
 		this.id = id ;
@@ -71,16 +94,25 @@ public class Submissao implements Serializable {
 		return data ;
 	}
 
-	
 	public void setData( Date data )
 	{
 		this.data = data ;
+	}
+	public List < Autor > getAutores()
+	{
+		return autores ;
+	}
+	
+	
+	public void setAutores( List < Autor > autores )
+	{
+		this.autores = autores ;
 	}
 	
 	@ Override
 	public String toString()
 	{
-		return "Submissao [id=" + id + ", titulo=" + titulo + ", data=" + data + "]" ;
+		return "Submissao [id=" + id + ", titulo=" + titulo + ", data=" + data + ", autores=" + autores + "]" ;
 	}
 
 }
