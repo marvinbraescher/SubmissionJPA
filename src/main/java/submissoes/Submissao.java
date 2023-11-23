@@ -15,39 +15,35 @@ import pessoas.Autor ;
  *
  */
 @Entity
+// Utilizando a estratégia JOINED para promover uma estrutura mais normalizada dos dados.
 @Inheritance (strategy = InheritanceType.JOINED)
 public class Submissao implements Serializable {
-	
-	
-	public util.Situacao getSituacao()
-	{
-		return Situacao ;
-	}
-
-	
-	public void setSituacao( util.Situacao situacao )
-	{
-		Situacao = situacao ;
-	}
-
 	private static final long serialVersionUID = 1L ;
 	
+	// Utilizando a estratégia de geração de identidade (identity)
+	//devido ao uso do MySQL, permitindo uma atribuição automática e
+	// incremental de valores para a chave primária "idsubmissao".
 	@Id
 	@Column(name = "idsubmissao", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id ;
 	
+	//anotação Enumerated com EnumType.STRING é utilizada para mapear a propriedade "Situacao" como uma coluna ENUM no banco de dados.
 	@Enumerated( EnumType.STRING )
 	private util.Situacao Situacao;
 
 	@Column(name = "titulo")
 	private String titulo;
 	
+	//A anotação Temporal com TemporalType.DATE é utilizada para mapear a propriedade "data" como uma data no banco de dados.
     @Temporal( TemporalType.DATE )
     @Column(name = "data")
 	private Date data;
     
-    //Não utilizei MERGE por que ele cria uma outra submissao no banco
+    //Optei por não utilizar a estratégia MERGE nesta configuração, pois ela poderia resultar na criação
+    //de uma nova submissão no banco de dados durante operações de atualização (merge). Ao invés disso,
+    //escolhi as estratégias PERSIST e REMOVE para controlar explicitamente a persistência e remoção
+    //das entidades relacionadas (autores) ao lidar com operações de persistência na entidade principal (submissão)
     @ManyToMany (cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinTable( name="sub_rel_autor",
     joinColumns={ @JoinColumn(name="idsubmissao")},
@@ -74,6 +70,16 @@ public class Submissao implements Serializable {
 		super() ;
 		this.titulo = titulo;
 		this.data = data;
+	}
+	
+	public util.Situacao getSituacao()
+	{
+		return Situacao ;
+	}
+
+	public void setSituacao( util.Situacao situacao )
+	{
+		Situacao = situacao ;
 	}
 
 	

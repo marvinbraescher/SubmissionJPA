@@ -9,11 +9,17 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="curso")
+//A anotação PrimaryKeyJoinColumn, em conjunto com a estratégia JOINED,
+//é utilizada para mapear a coluna "idcurso" como chave primária e estrangeira referenciando a coluna "idsubmissao"
+//na tabela correspondente, promovendo uma estrutura mais normalizada dos dados.
 @PrimaryKeyJoinColumn(name = "idcurso", referencedColumnName =
 "idsubmissao")
 public class Curso extends Submissao implements Serializable {
 
-	
+	// Ausência da anotação @Id devido à herança do
+	//tipo JOINED, onde a chave primária é tratada nas tabelas 
+	//específicas para cada subclasse.
+
 	private static final long serialVersionUID = 1L;
 
     @Column(name = "justificativa", nullable = false)

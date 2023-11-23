@@ -95,7 +95,7 @@ public class DaoSubmissao {
 		try
 		{
 			em = JPAUtil.getEntityManager() ;
-			TypedQuery < Submissao > query = em.createQuery( "SELECT obj FROM Usuario obj" , Submissao.class ) ;
+			TypedQuery < Submissao > query = em.createQuery( "SELECT obj FROM Submissao obj" , Submissao.class ) ;
 			List < Submissao > usuarios = query.getResultList() ;
 			return usuarios ;
 		} catch ( RuntimeException e )

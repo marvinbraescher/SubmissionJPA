@@ -51,7 +51,7 @@ public class DaoArtigo {
 		}
 	}
 	
-	public Artigo buscarID( int id )
+	public Artigo buscarID( Long id )
 	{
 		try
 		{
@@ -93,7 +93,7 @@ public class DaoArtigo {
 		try
 		{
 			em = JPAUtil.getEntityManager() ;
-			TypedQuery < Artigo > query = em.createQuery( "SELECT obj FROM artigo obj" , Artigo.class ) ;
+			TypedQuery < Artigo > query = em.createQuery( "SELECT obj FROM Artigo obj" , Artigo.class ) ;
 			List < Artigo > artigos = query.getResultList() ;
 			return artigos ;
 		} catch ( RuntimeException e )

@@ -50,7 +50,7 @@ EntityManager em ;
 		}
 	}
 	
-	public Curso buscarID( int id )
+	public Curso buscarID( long id )
 	{
 		try
 		{
@@ -92,7 +92,7 @@ EntityManager em ;
 		try
 		{
 			em = JPAUtil.getEntityManager() ;
-			TypedQuery < Curso > query = em.createQuery( "SELECT obj FROM curso obj" , Curso.class ) ;
+			TypedQuery < Curso > query = em.createQuery( "SELECT obj FROM Curso obj" , Curso.class ) ;
 			List < Curso > cursos = query.getResultList() ;
 			return cursos ;
 		} catch ( RuntimeException e )

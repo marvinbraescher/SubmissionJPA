@@ -93,7 +93,7 @@ public class DaoInstituicao {
 		try
 		{
 			em = JPAUtil.getEntityManager() ;
-			TypedQuery < Instituicao > query = em.createQuery( "SELECT obj FROM instituicao obj" , Instituicao.class ) ;
+			TypedQuery < Instituicao > query = em.createQuery( "SELECT obj FROM Instituicao obj" , Instituicao.class ) ;
 			List < Instituicao > autores = query.getResultList() ;
 			return autores ;
 		} catch ( RuntimeException e )

@@ -8,13 +8,14 @@ import javax.persistence.*;
  *
  */
 @Entity
-
 @Table(name="telefone")
 public class Telefone implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
 	
+	// Utilizando a estratégia de geração de identidade (identity)
+	// devido ao uso do MySQL, permitindo uma atribuição automática e
+	// incremental de valores para a chave primária "idsubmissao".
 	@ Id
 	@Column(name = "idtelefone", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

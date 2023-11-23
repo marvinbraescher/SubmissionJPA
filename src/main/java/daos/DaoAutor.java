@@ -53,7 +53,7 @@ public class DaoAutor {
 		}
 	}
 	
-	public Autor buscarID( int id )
+	public Autor buscarID( Long id )
 	{
 		try
 		{
@@ -95,7 +95,7 @@ public class DaoAutor {
 		try
 		{
 			em = JPAUtil.getEntityManager() ;
-			TypedQuery < Autor > query = em.createQuery( "SELECT obj FROM autor obj" , Autor.class ) ;
+			TypedQuery < Autor > query = em.createQuery( "SELECT obj FROM Autor obj" , Autor.class ) ;
 			List < Autor > autores = query.getResultList() ;
 			return autores ;
 		} catch ( RuntimeException e )

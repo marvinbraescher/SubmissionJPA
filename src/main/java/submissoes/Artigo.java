@@ -10,11 +10,16 @@ import javax.persistence.* ;
  */
 @ Entity
 @ Table ( name = "artigo" )
+//Utilizando a estratégia JOINED para promover uma estrutura mais normalizada dos dados.
 @PrimaryKeyJoinColumn(name = "idartigo", referencedColumnName =
 "idsubmissao")
 public class Artigo extends Submissao implements Serializable {
 	
 	private static final long serialVersionUID = 1L ;
+	
+	// Ausência da anotação @Id devido à herança do
+	//tipo JOINED, onde a chave primária é tratada nas tabelas 
+	//específicas para cada subclasse.
 	
 	@ Column ( name = "resumo" , nullable = false )
 	private String resumo ;

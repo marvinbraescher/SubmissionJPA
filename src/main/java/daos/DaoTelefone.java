@@ -94,7 +94,7 @@ public class DaoTelefone {
 		try
 		{
 			em = JPAUtil.getEntityManager() ;
-			TypedQuery < Telefone > query = em.createQuery( "SELECT obj FROM telefone obj" , Telefone.class ) ;
+			TypedQuery < Telefone > query = em.createQuery( "SELECT obj FROM Telefone obj" , Telefone.class ) ;
 			List < Telefone > telefones = query.getResultList() ;
 			return telefones ;
 		} catch ( RuntimeException e )
