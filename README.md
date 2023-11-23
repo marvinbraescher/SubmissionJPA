@@ -30,12 +30,12 @@ This project demonstrates the implementation of a class diagram using Java Persi
 
    ```bash
    git clone https://github.com/[marvinbraescher]/[SubmissionJPA].git
+```
+2. **Open the project in your preferred IDE.**
 
-   1. **Open the project in your preferred IDE.**
+3. **Configure the database connection in the `persistence.xml` file.**
 
-2. **Configure the database connection in the `persistence.xml` file.**
-
-3. **Run the `Main` class to execute the provided examples and see JPA in action.**
+4. **Run the `Main` class to execute the provided examples and see JPA in action.**
 
 ## Features
 
